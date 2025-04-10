@@ -1,0 +1,148 @@
+.hero {
+    text-align: center;
+    padding: 60px 24px;
+    border-radius: 0px 0px 60px 0px;
+    background: linear-gradient(174deg, #E2EDFD 4.92%, #FFF 95.87%);
+    background-image: url('/wp-content/uploads/2025/03/fondo-citas.png');
+    background-repeat: no repeat;
+    background-size: cover;
+}
+
+@media(min-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+}
+
+.hero-container,
+.cards__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-container .heading--64 {
+    font-weight: 400;
+}
+
+.hero-container .heading--18 {
+    margin-top: 12px;
+}
+
+.cards {
+    padding: 0 24px 42px 24px;
+}
+
+@media(min-width: 1024px) {
+    .cards {
+        padding: 0 0 60px 0;
+    }
+}
+
+.cards__container {
+    display: grid;
+    gap: 42px;
+}
+
+@media(min-width: 768px) {
+    .cards__container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px;
+    }
+}
+
+.card {
+    border-radius: 6px;
+    border: none;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0px 4px 24px 0px rgba(103, 114, 131, 0.15);
+}
+
+.card:hover .card-link__span::after {
+    width: 100%;
+}
+
+.card .card__image {
+    border-radius: 6px 6px 0 0;
+}
+
+.card__content {
+    padding: 18px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+@media(min-width: 768px) {
+    .card__content {
+        padding: 18px 30px 36px 30px;
+    }
+}
+
+.card__content .heading--24 {
+    font-weight: 500;
+}
+
+.card__content .card__description {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.card__content .card__description p {
+    font-family: "Open Sans";
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.27px;
+}
+
+.card__link {
+    color:#E40046;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    margin-top: auto;
+}
+
+.card__link:hover {
+    color:#E40046;
+}
+
+.card__link::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("/wp-content/uploads/2025/01/Right-arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card__link .card-link__span {
+    position: relative;
+    display: inline-block;
+}
+
+.card__link .card-link__span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #E40046;
+    transition: width 0.3s ease-in-out;
+}
+
+.card__link .card-link__span:hover::after {
+    width: 100%;
+}

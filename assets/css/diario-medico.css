@@ -1,0 +1,1702 @@
+a {
+    text-decoration: none;
+}
+
+@media(min-width: 768px) {
+    main.section-diariomedico__container .breadcrumbs #breadcrumbs {
+        padding: 0;
+    }
+}
+
+/* Seccion Hero */
+.section-hero__diariomedico {
+    background-image: url('/wp-content/uploads/2025/04/banner-desktop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 42px 24px;
+}
+
+.section-hero__diariomedico,
+.section-input__search {
+    display: none;
+}
+
+@media(min-width: 768px) {
+
+    .section-hero__diariomedico,
+    .section-input__search {
+        display: block;
+    }
+}
+
+@media(min-width: 1024px) {
+    .section-hero__diariomedico {
+        padding: 69px 0 66px 0;
+    }
+}
+
+.section-hero__container {
+    overflow: hidden;
+    max-width: 1240px;
+    margin: auto;
+}
+
+.section-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+@media(min-width: 1024px) {
+    .section-hero__content {
+        flex-direction: row;
+    }
+}
+
+.search__input {
+    position: relative;
+    width: 515px;
+    /* Ajusta el tamaño según necesites */
+    height: 56px;
+}
+
+.input-text {
+    width: 100%;
+    height: 100%;
+    padding-left: 18px;
+    border: 1px solid #D5DBE7 !important;
+    border-radius: 6px !important;
+    font-family: "Open Sans" !important;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.27px;
+}
+
+.input-text::placeholder {
+    color: #717C7D !important;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.select-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #d40055;
+    cursor: pointer;
+    width: 206px;
+}
+
+.select-container select {
+    appearance: none;
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: #d40055;
+    cursor: pointer;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.select-container select:focus {
+    outline: none;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.btn-filter__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.btn-filter {
+    display: flex;
+    justify-content: center;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.36px;
+    background: white;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    color: #002D72;
+    flex: 0 0 calc(16.666% - 8px);
+    max-width: calc(16.666% - 10px);
+}
+
+@media(min-width: 1024px) {
+    .btn-filter {
+        flex: 0 0 calc(11.111% - 8px);
+        max-width: calc(11.111% - 11px);
+    }
+}
+
+.btn-filter:hover,
+.btn-filter.active {
+    background: #002D72;
+    color: white;
+}
+
+.section-results__container {
+    margin: auto;
+}
+
+.section-results__container p {
+    margin-bottom: 20px;
+}
+
+.section-results__container button {
+    margin: auto;
+}
+
+.section-load__moreBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+/* End Seccion Hero */
+
+.section-input__search {
+    background: rgba(213, 219, 231, 0.10);
+    display: none;
+}
+
+@media(min-width: 768px) {
+    .section-input__search {
+        display: block;
+    }
+}
+
+.section-input__container {
+    max-width: 1240px;
+    margin: auto;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(min-width: 1024px) {
+    .section-input__container {
+        padding: 24px 0;
+    }
+}
+
+.heading--46 {
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 49px;
+}
+
+.section-hero__content .heading--46 {
+    margin-top: 19px;
+}
+
+.section-hero__content .diario-medico__description {
+    margin-top: 36px;
+}
+
+.diario-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 42px 0 42px 24px;
+}
+
+.diario-container .heading--48 {
+    padding-right: 24px;
+}
+
+.diario-container [class*="swiper-pagination"] {
+    margin-top: 0;
+}
+
+@media(min-width: 768px) {
+    .diario-container .heading--48 {
+        padding-right: 0;
+    }
+
+    .diario-container [class*="swiper-pagination"] {
+        display: none;
+    }
+}
+
+@media(min-width: 1024px) {
+    .diario-container {
+        padding: 60px 0;
+    }
+}
+
+.diario-container .heading--48 {
+    text-align: left;
+}
+
+.diario-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 36px;
+    margin-top: 42px;
+}
+
+.diario-principal {
+    display: flex;
+    flex-direction: column;
+    padding-right: 24px;
+}
+
+@media(min-width: 1024px) {
+    .diario-principal {
+        padding-right: 0;
+    }
+}
+
+.diario-img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+@media(min-width: 768px) {
+    .diario-img {
+        max-width: 100%;
+        max-height: 269px;
+    }
+}
+
+.diario-contenido {
+    margin-top: 24px;
+}
+
+.diario-medico__title {
+    margin-top: 14px;
+}
+
+.diario-card__tags {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.diario-categoria {
+    color: #263956;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.06px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    background: #9ADBE8;
+    padding: 3px 18px;
+    width: max-content;
+}
+
+.diario-fecha {
+    color: #263956;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+}
+
+.diario-heading18 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.18px;
+}
+
+.diario-autor {
+    color: #0C2448;
+    margin-top: 12px;
+}
+
+.diario-autor__contenido {
+    color: #0C2448;
+    margin: 24px 0;
+}
+
+.diario-link {
+    color: #E40046;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.diario-link:hover {
+    color: #E40046;
+}
+
+.diario-link::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("/wp-content/uploads/2025/01/Right-arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.diario-link .diario-link__span {
+    position: relative;
+    display: inline-block;
+}
+
+.diario-link .diario-link__span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #E40046;
+    transition: width 0.3s ease-in-out;
+}
+
+.diario-link .diario-link__span:hover::after {
+    width: 100%;
+}
+
+.diario-link__secundario {
+    margin-top: 12px;
+}
+
+/* Publicaciones secundarias */
+.diario-secundarios {
+    border-radius: 6px;
+    background: #EBF8FA;
+}
+
+.diario-secundarios .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .diario-secundarios {
+        overflow: hidden;
+    }
+
+    .diario-secundarios .swiper-wrapper {
+        flex-direction: row;
+        height: 100%;
+    }
+
+    .diario-secundarios .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+        margin-right: 0 !important;
+    }
+}
+
+.diario-card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+@media(min-width: 1024px) {
+    .diario-card-body {
+        border-bottom: 1px solid#D5DBE7;
+        border-right: 0;
+        padding-bottom: 18px;
+    }
+
+    .diario-card:last-child .diario-card-body {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .diario-card:nth-child(2) {
+        padding-top: 6px;
+    }
+
+    .diario-card:nth-child(3) {
+        padding-top: 6px;
+    }
+}
+
+.diario-card {
+    border-right: 1px solid#D5DBE7;
+    padding: 18px;
+}
+
+@media(min-width: 1024px) {
+    .diario-card {
+        border-right: 0;
+        padding: 18px 24px;
+    }
+}
+
+.diario-card-body .diario-heading18 {
+    margin-top: 12px;
+}
+
+.diario-paginacion {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .diario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-diario__medico .boton-v2 {
+        width: 100%;
+    }
+}
+
+.diario-medico-container {
+    max-width: 1240px;
+    margin: auto;
+    padding: 42px 24px;
+}
+
+@media(min-width: 1024px) {
+    .diario-medico-container {
+        padding: 60px 0;
+    }
+}
+
+.diario-medico-container .heading--24,
+.publicaciones__title {
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.diario-medico-container .heading--18,
+.publicaciones__container .heading--18 {
+    margin-top: 12px;
+}
+
+.publicaciones__container .diario-link {
+    margin-top: 24px;
+}
+
+.diario-medico__grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+
+@media(min-width: 768px) {
+    .diario-medico__grid {
+        flex-direction: row;
+    }
+}
+
+.diario-medico-item {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 47.33%;
+}
+
+@media(min-width: 1024px) {
+    .diario-medico-item {
+        flex: 0 0 31.33%;
+    }
+}
+
+.diario-medico-item .diario-link {
+    margin-top: auto;
+}
+
+.diario-medico-img img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.diario-medico-content {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.diario-medico-content .diario-autor {
+    margin-bottom: 24px;
+}
+
+.ver-mas-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.color--0C2448 {
+    color: #0C2448;
+}
+
+/* Texto Imagen Fondo */
+
+.section-directorio__info {
+    background: rgba(213, 219, 231, 0.15);
+    padding: 42px 24px;
+}
+
+@media(min-width: 1024px) {
+    .section-directorio__info {
+        padding: 72px 0;
+    }
+}
+
+.section-directorio__info .heading--48 {
+    text-align: left;
+}
+
+.banner__container {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #D5DBE7;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 1240px;
+    margin: auto;
+}
+
+@media(min-width: 768px) {
+    .banner__container {
+        flex-direction: row;
+    }
+}
+
+.banner__container p {
+    font-family: "Open Sans";
+}
+
+.section-directorio__info .boton-v2 {
+    margin-top: 24px;
+}
+
+.section-directorio__info .heading--18 {
+    margin-top: 12px;
+}
+
+.banner__content {
+    flex: 1;
+    padding: 24px;
+}
+
+@media(min-width: 1024px) {
+    .banner__content {
+        padding: 42px 0 42px 60px;
+    }
+}
+
+.banner__image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sección Diario Carrusel */
+
+.section__publicaciones {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 42px 0 42px 24px;
+}
+
+.section__publicaciones .heading--48 {
+    text-align: left;
+}
+
+@media(min-width: 768px) {
+    .section__publicaciones .heading--48 {
+        text-align: center;
+    }
+}
+
+@media(min-width: 1024px) {
+    .section__publicaciones {
+        padding: 60px 0;
+    }
+}
+
+.publicaciones__container {
+    position: relative;
+    margin-top: 36px;
+}
+
+@media(min-width: 768px) {
+    .publicaciones__container {
+        margin-top: 60px;
+    }
+}
+
+.publicaciones__swiper {
+    position: relative;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width: 767px) {
+    .swiper-slide {
+        margin-right: 24px !important;
+    }
+}
+
+.publicaciones__card {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.swiper-custom-button {
+    display: none !important;
+    width: 42px !important;
+    height: 42px !important;
+}
+
+@media(min-width: 1024px) {
+    .swiper-custom-button {
+        display: inline-block !important;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    width: 24px !important;
+    border-radius: 6px !important;
+    opacity: 1 !important;
+    background: #e40046 !important;
+}
+
+.swiper-pagination-bullet {
+    background: #e40046 !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    display: none;
+}
+
+[class*="swiper-pagination"] {
+    display: flex;
+    justify-content: center;
+    position: relative !important;
+    bottom: inherit !important;
+    top: inherit !important;
+    width: 100%;
+    margin-top: 36px;
+}
+
+@media(min-width: 768px) {
+    [class*="swiper-pagination"] {
+        margin-top: 60px;
+    }
+}
+
+[class*="swiper-button-prev"] {
+    left: -40px !important;
+    background: url('../../assets/images/ico-chevron-rojo-redondo-ant.svg');
+}
+
+[class*="swiper-button-next"] {
+    right: -40px !important;
+    background: url('../../assets/images/ico-chevron-rojo-redondo-sig.svg');
+}
+
+/* Hero - Diario Médico Single */
+
+.single-hero__section {
+    background-image: url('/wp-content/uploads/2025/04/banner-desktop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 42px 24px;
+}
+
+@media(min-width: 1024px) {
+    .single-hero__section {
+        padding: 42px 0;
+    }
+}
+
+.single-hero__section .heading--48 {
+    font-weight: 400;
+    text-align: left;
+}
+
+.single-hero__section .heading--14 {
+    font-family: "Open Sans";
+    line-height: 20px;
+    letter-spacing: 0.21px;
+}
+
+.hero-diario {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    max-width: 1240px;
+    margin: auto;
+}
+
+.hero-diario-explora {
+    background: #FFFFFF;
+    padding: 54px 30px;
+    border-radius: 6px;
+    max-width: 30%;
+}
+
+.hero-diario-explora .heading--18 {
+    margin-top: 6px;
+}
+
+.hero-diario-explora .diario-link {
+    margin-top: 24px;
+}
+
+.hero-diario-contenido .heading--30 {
+    font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-diario {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-diario-explora {
+        max-width: 100%;
+        margin-top: 30px;
+        padding: 12px 24px;
+    }
+}
+
+/* Diario single content */
+
+.section-contenido__button {
+    background: rgba(213, 219, 231, 0.15);
+    padding: 24px 0 24px 24px;
+}
+
+@media(min-width: 1024px) {
+    .section-contenido__button {
+        padding: 24px 0;
+    }
+}
+
+.section-nav__container {
+    max-width: 1240px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.section-nav__container .diario-nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* para suavidad en iOS */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.section-nav__container .diario-nav::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
+
+.nav-diario__contenido {
+    font-family: "Open Sans";
+    font-size: 18px;
+    color: #E40046;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.36px;
+    padding: 16px 24px;
+    border-radius: 6px;
+    border: 1px solid #FFABC4;
+    background: #FFF;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.nav-diario__contenido:hover,
+.nav-diario__contenido.active {
+    background-color: #E40046;
+    color: #FFF;
+}
+
+.diario-contenido__single {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    max-width: 1240px;
+    margin: auto;
+    padding: 24px;
+}
+
+@media(min-width: 1024px) {
+    .diario-contenido__single {
+        padding: 24px 0 60px 0;
+    }
+}
+
+.diario-contenido__single .heading--36 {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.diario-contenido__single .diario-main .img-content {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+@media(min-width: 768px) {
+    .diario-contenido__single .diario-main .img-content {
+        max-height: 269px;
+    }
+}
+
+.diario-contenido__single .diario-main .diario-section p,
+.entry-content p {
+    margin-bottom: 24px;
+    color: #263956;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.36px;
+}
+
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--263956);
+}
+
+.diario-contenido__single .diario-main .diario-section h2,
+.diario-contenido__single .diario-main .diario-section h4,
+.diario-contenido__single .diario-main .diario-section h5,
+.diario-contenido__single .diario-main .diario-section h6 {
+    color: #002D72;
+    font-family: Prompt;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0.12px;
+}
+
+.diario-contenido__single .diario-main .diario-section .content {
+    border-top: 1px solid #D5DBE7;
+    margin-top: 6px;
+    padding-top: 24px;
+}
+
+.diario-main {
+    flex: 1 1 65%;
+}
+
+.diario-sidebar {
+    flex: 1 1 30%;
+    background: #EBF8FA;
+    padding: 36px 12px;
+    border-radius: 6px 6px 60px 6px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+@media(min-width: 768px) {
+    .diario-sidebar {
+        padding: 36px;
+    }
+}
+
+.diario-sidebar .heading--30 {
+    font-weight: 300;
+    letter-spacing: 0.45px;
+}
+
+.sidebar-item {
+    border-bottom: 1px solid #D5DBE7;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-item .diario-link {
+    margin-top: 6px;
+    margin-bottom: 24px;
+}
+
+.sidebar-item:last-child .diario-link {
+    margin-bottom: 0;
+}
+
+.btn-content__up {
+    margin-top: 42px;
+}
+
+.btn-content__diario {
+    color: #E40046;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    border-radius: 6px;
+    border: 1px solid #E40046;
+    background: #FFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 16px 24px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 171, 196, 0.50);
+}
+
+@media(min-width: 1024px) {
+    .btn-content__diario {
+        width: 271px;
+    }
+}
+
+.btn-content__diario svg path {
+    transition: fill 0.3s ease;
+}
+
+.btn-content__diario:hover {
+    background-color: #E40046;
+    color: white;
+}
+
+.btn-content__diario:hover svg path {
+    fill: white;
+}
+
+.social-share__buttons {
+    margin-top: 40px;
+}
+
+.social-share__buttons .heading--14 {
+    font-family: "Open Sans";
+    line-height: 20px;
+    letter-spacing: 0.21px;
+}
+
+.social-share__buttons .icono {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #0C2448;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.social-share__buttons .icono img {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s ease;
+}
+
+.social-share__buttons .icono:hover {
+    background: #e40046;
+    border: 1px solid #e40046;
+}
+
+.social-share__buttons .icono:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.social-share__buttons .iconos-redes {
+    margin-top: 12px;
+    display: flex;
+    gap: 18px;
+}
+
+/* End Diario single content */
+
+/* Filtro Desktop */
+
+#resultsTitle {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.filter-select-container {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    width: 515px;
+    height: 56px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid #D5DBE7;
+    border-radius: 6px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.27px;
+    color: #677283;
+    appearance: none;
+    background-image: url('/wp-content/uploads/2025/03/Down-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Estilos para los checkboxes de filtro */
+.filter-checkboxes-container {
+    margin-bottom: 20px;
+    width: 515px;
+    height: 56px;
+}
+
+.filter-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #0C2448;
+}
+
+.checkboxes-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Estilos para los filtros activos */
+.active-filters-container {
+    margin-bottom: 20px;
+}
+
+.active-filters-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+    color: #E40046;
+    border-radius: 24px;
+    background: rgba(255, 171, 196, 0.50);
+    padding: 10px 18px;
+}
+
+.remove-filter {
+    background: none;
+    border: none;
+    color: #E40046;
+    font-size: 18px;
+    margin-left: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-filters-btn {
+    font-family: "Open Sans";
+    color: #263956;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+    border-radius: 24px;
+    padding: 10px 18px;
+    background: #D5DBE7;
+    border: transparent;
+}
+
+/* Estilos para la búsqueda de checkboxes */
+.checkbox-search-container {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.checkbox-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #0C2448;
+}
+
+.checkbox-search-input::placeholder {
+    color: #999;
+}
+
+.no-checkbox-results {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+/* Estilos para los filtros activos en la sección de resultados */
+
+.results-active-filters-container {
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+@media(max-width: 767px) {
+    .results-active-filters-container {
+        display: none !important;
+    }
+}
+
+.results-filters-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1;
+}
+
+#resultsClearFiltersBtn {
+    margin-left: 15px;
+}
+
+/* Asegurarse de que la sección de resultados tendrá position relative para el posicionamiento */
+.diario-medico-container {
+    position: relative;
+}
+
+/* Estilos para el multiselect */
+/* Estilos para el select personalizado */
+/* Estilos personalizados para select2 con checkboxes */
+.select2-container--default.custom-select2 .select2-selection--multiple {
+    border-radius: 6px !important;
+    border: 1px solid #D5DBE7 !important;
+    padding: 16px 18px !important;
+    background-image: url('/wp-content/uploads/2025/03/Down-arrow.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    color: #677283 !important;
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: 0.27px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-search--inline .select2-search__field {
+    font-family: "Open Sans" !important;
+}
+
+/* Hacer que el contenedor se parezca a un select normal cuando está cerrado */
+.select2-container--default.custom-select2 .select2-selection--multiple:not(:focus):not(.select2-selection--focus) {
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Ocultar el botón de cierre "×" del select cuando está cerrado */
+.select2-container--default.custom-select2 .select2-selection--multiple:not(:focus):not(.select2-selection--focus) .select2-selection__choice__remove {
+    display: none !important;
+}
+
+/* Opciones con checkbox en el dropdown */
+.select2-option-checkbox {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.select2-option-checkbox input[type="checkbox"] {
+    margin-left: 18px !important;
+    margin-right: 10px !important;
+    width: 16px !important;
+    height: 16px !important;
+    appearance: none !important;
+    border: 2px solid #E40046 !important;
+    border-radius: 3px !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+.select2-option-checkbox input[type="checkbox"]:checked {
+    background-color: #E40046 !important;
+    border-color: #E40046 !important;
+}
+
+.select2-option-checkbox input[type="checkbox"]:checked:after {
+    content: '';
+    position: absolute !important;
+    top: 2px !important;
+    left: 5px !important;
+    width: 4px !important;
+    height: 9px !important;
+    border: solid white !important;
+    border-width: 0 2px 2px 0 !important;
+    transform: rotate(45deg) !important;
+}
+
+.select2-option-checkbox label {
+    cursor: pointer !important;
+    user-select: none !important;
+    color: #263956 !important;
+}
+
+/* Estilo para el dropdown */
+.select2-dropdown {
+    border-color: #ddd !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos para los elementos seleccionados */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #E40046 !important;
+    border: 1px solid #E40046 !important;
+    color: white !important;
+    border-radius: 20px !important;
+    padding: 2px 10px !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: white !important;
+    margin-right: 5px !important;
+}
+
+/* Estilo para el campo de búsqueda */
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: #E40046 !important;
+    outline: none !important;
+}
+
+/* Ocultar completamente las etiquetas de selección en el select */
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    display: block !important;
+    padding: 0 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    display: none !important;
+    /* Asegurar que no se muestren */
+}
+
+/* Asegurar que el placeholder siempre sea visible */
+.select2-container--default .select2-selection--multiple .select2-search--inline {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-search--inline .select2-search__field {
+    width: 100% !important;
+    margin-top: 0 !important;
+    height: 28px !important;
+    margin-left: 0 !important;
+}
+
+.select2-results .select2-results__option--highlighted[aria-selected] {
+    background-color: #F2F4F8 !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-results .select2-results__option[aria-selected] {
+    border-bottom: 1px solid #D5DBE7 !important;
+}
+
+.select2-results__option {
+    padding: 0 !important;
+    height: 56px !important;
+    display: flex !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+    display: none !important;
+}
+
+.select2-results__option.select2-results__message {
+    font-family: "Open Sans" !important;
+    font-size: 18px !important;
+    color: #263956 !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: 0.27px !important;
+    margin-left: 18px !important;
+    align-items: center !important;
+}
+
+/* End Filtro Desktop */
+
+/* Filtro Mobile */
+.section-hero__mobile {
+    display: none;
+    width: 100%;
+}
+
+.heading--20__mobile {
+    color: #0C2448;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.section-hero__mobile .mobile-filter-container .heading--46 {
+    margin-top: 12px;
+}
+
+.section-hero__mobile .mobile-filter-container .btn-filter__container {
+    margin-top: 42px;
+}
+
+.mobile-filter-button {
+    font-family: "Open Sans";
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #E40046;
+    border-radius: 6px;
+    color: #E40046;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 12px;
+    gap: 6px;
+}
+
+.mobile-filters-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.mobile-filters-panel.open {
+    display: flex;
+}
+
+.mobile-filter-header {
+    background-color: #002D72;
+    padding: 9px 24px;
+    display: flex;
+    align-items: center;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    font-family: "Open Sans";
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.14px;
+    padding: 0;
+}
+
+.back-button svg {
+    margin-right: 12px;
+}
+
+.mobile-filters-content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-filter-section {
+    margin-bottom: 24px;
+}
+
+.mobile-filter-section h3 {
+    font-size: 16px;
+    color: #003087;
+    margin-bottom: 12px;
+}
+
+/* Selects */
+.mobile-select-container {
+    position: relative;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.mobile-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23E40046" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+.mobile-active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.mobile-filter-tag {
+    font-family: "Open Sans";
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 171, 196, 0.50);
+    color: #E40046;
+    padding: 10px 18px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+}
+
+.mobile-filter-tag button {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 8px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botones de acción */
+.mobile-filter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.apply-filters-button {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: #E40046;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.apply-filters-button:disabled {
+    background-color: #D5DBE7;
+    cursor: not-allowed;
+}
+
+.cancel-button {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: transparent;
+    color: #E40046;
+    border: 1px solid #E40046;
+    border-radius: 6px;
+    font-size: 18px;
+    font-family: "Open Sans";
+    font-weight: 400;
+    line-height: 24px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 171, 196, 0.50);
+}
+
+@media (max-width: 767px) {
+    .section-hero__mobile {
+        display: block;
+        background-image: url('/wp-content/uploads/2025/04/banner-mobile.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 42px 24px;
+    }
+
+    .desktop-filter-container {
+        display: none;
+    }
+}
+
+.mobile-clear-filters-container {
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.mobile-clear-filters-button {
+    font-family: "Open Sans";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #D5DBE7;
+    border: none;
+    color: #263956;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.btn-mobile__filter {
+    margin-top: 30px;
+}
+
+.section-hero__mobile .select2-container--default .select2-selection--multiple {
+    border-bottom: 1px solid #D5DBE7 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 0 0 12px 0 !important;
+    background-image: url('/wp-content/uploads/2025/03/Down-arrow.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0 center !important;
+    color: #263956 !important;
+    font-family: "Open Sans" !important;
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: 0.27px !important;
+    border-radius: 0;
+}
+
+.section-hero__mobile .select2-container--default .select2-results>.select2-results__options {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.section-hero__mobile .select2-container--open .select2-dropdown--below {
+    border: none !important;
+}
+
+.section-hero__mobile .select2-results__option {
+    height: 48px !important;
+}
+
+.section-hero__mobile .select2-container--default .select2-selection--single .select2-selection__rendered,
+.section-hero__mobile .select2-results__option[aria-selected] {
+    border-bottom: none !important;
+}
+
+.section-hero__mobile .select2-option-checkbox input[type="checkbox"] {
+    margin: 0 !important;
+}
+
+.section-hero__mobile .select2-option-checkbox {
+    gap: 12px !important;
+}
+
+.section-hero__mobile .select2-option-checkbox label {
+    color: #263956 !important;
+    font-family: "Open Sans" !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: 0.27px !important;
+}
+
+.no-results {
+    display: none;
+}
+
+/* End Filtro Mobile */
