@@ -84,7 +84,6 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                     <img src="https://via.placeholder.com/372x532" alt="Imagen">
                             <?php endif; ?>
                             <div class="seccionCardioUInternaCurso__img-info">
-                                <?php if($horas) : ?>
                                 <div class="informacion">
                                     <span class="icono">
                                         <?php 
@@ -92,12 +91,13 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                             display_icon('ico-calendario'); 
                                         ?>
                                     </span>
+                                    <?php if($horas) : ?>
                                     <div>
                                         <p class="heading--14 color--677283">Horas certificables:</p>
                                         <p class="heading--15 color--677283"><?php echo $horas;?></p>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
-                                <?php endif; ?>
 
                                 <?php if($modalidad) : ?>
                                 <div class="informacion">
@@ -254,6 +254,7 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                     <strong>Modalidad:</strong> 
                                     <?php echo $modalidad; ?>
                                 </p>
+                                <?php if($tipo_oferta) : ?>
                                 <p class="info heading--14 color--677283">
                                     <span>
                                         <?php 
@@ -264,27 +265,31 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                     <strong>Tipo:</strong> 
                                     <?php echo $tipo_oferta; ?>
                                 </p>
-                                <p class="info heading--14 color--677283">
-                                    <span>
-                                        <?php 
-                                            get_template_part('template-parts/content', 'icono');
-                                            display_icon('ico-reloj-2'); 
-                                        ?>
-                                    </span>
-                                    <strong>Horas certificables:</strong> 
-                                    <?php echo $horas; ?>
-                                </p>
-								
-								<p class="info heading--14 color--677283">
-                                    <?php echo $certificacion; ?>
-                                </p>
+                                <?php endif; ?>
+                                <?php if($horas) : ?>
+                                    <p class="info heading--14 color--677283">
+                                        <span>
+                                            <?php 
+                                                get_template_part('template-parts/content', 'icono');
+                                                display_icon('ico-reloj-2'); 
+                                            ?>
+                                        </span>
+                                        <strong>Horas certificables:</strong> 
+                                        <?php echo $horas; ?>
+                                    </p>
+                                <?php endif; ?>
+                                <?php if($certificacion) : ?>
+                                    <p class="info heading--14 color--677283">
+                                        <?php echo $certificacion; ?>
+                                    </p>
+                                <?php endif; ?>
 								
 								
                                 <?php if (!empty($fecha_inicio)): ?>
                                     <p class="info heading--14 color--677283">
                                         <span>
                                             <?php 
-                                                get_template_part('template-pparts/content', 'icono');
+                                                get_template_part('template-parts/content', 'icono');
                                                 display_icon('ico-calendario'); 
                                             ?>
                                         </span>
@@ -482,6 +487,7 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                             <strong>Modalidad:</strong> 
                                             <?php echo $modalidad; ?>
                                         </p>
+                                        <?php if($tipo_oferta) : ?>
                                         <p class="info heading--14 color--677283">
                                             <span>
                                                 <?php 
@@ -492,6 +498,8 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                             <strong>Tipo:</strong> 
                                             <?php echo $tipo_oferta; ?>
                                         </p>
+                                        <?php endif; ?>
+                                        <?php if($horas) : ?>
                                         <p class="info heading--14 color--677283">
                                             <span>
                                                 <?php 
@@ -502,6 +510,7 @@ set_query_var('grupo_cursos', $grupo_cursos);
                                             <strong>Horas certificables:</strong> 
                                             <?php echo $horas; ?>
                                         </p>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="seccionCardioUInterna__flotante-precio">
                                     <?php if($precio !== '$' || $precio == '#') : ?>

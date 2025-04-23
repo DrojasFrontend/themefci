@@ -66,12 +66,18 @@ $servicios = (isset($doctores[$post->post_name])) ? formatear_servicios($doctore
                             <div class="especialistas--contenido__content__internas contenidos">
                                 <div class="especialistas--contenido__content__internas--cadaUna cadaBloq elegido">
                                     <div class="texto">
+                                        <?php echo do_shortcode('[site_reviews_summary assigned_posts="' . get_the_ID() . '"]'); ?>
+                                        <br><br>
+
                                         <h2>Biografía</h2>
                                         <?= $biografia ?>
                                         <h2>Áreas de interés</h2>
                                         <?= $areas_interes ?>
                                         <h2>Sociedades científicas</h2>
                                         <?= $sociedades_cientificas ?>
+
+                                        <br><br>
+                                        <?php echo do_shortcode('[site_reviews_form assigned_posts="' . get_the_ID() . '"]'); ?>
                                     </div>
                                 </div>
                                 <?php if(is_array($publicaciones )): ?>

@@ -71,7 +71,7 @@ if ($servicios_parent_id > 0) {
   <div class="customContainer px-0">
     <h2 class="font-fira-sans fs-2 mb-12 text-left">Especialidades LaCardio</h2>
     <div class="row">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 mb-30">
         <p class="font-sans fs-p mb-30">Encuentra la especialidad que necesitas según la <strong>letra inicial</strong></p>
         <div class="d-flex flex-wrap gap-22">
           <?php

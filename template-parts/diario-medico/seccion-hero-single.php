@@ -7,6 +7,14 @@
     $especialista_url = null;
     $titulo_genero = '';
 
+    $autor_id = get_post_meta(get_the_ID(), 'author_doctor', true);
+    $autor_url = $autor_id ? get_permalink($autor_id) : '';
+    if ($autor_id) {
+        $autor_nombre = get_the_title($autor_id);
+    } else {
+        $autor_nombre = '';
+    }
+
     if (!empty($especialista)) {
         if (is_array($especialista)) {
             $especialista = $especialista[0]; 
@@ -45,12 +53,14 @@
 
             <h2 class="heading--48 color--002D72"><?php the_title(); ?></h2>
             <p class="heading--14 color--002D72">Escrito por:</p>
-            <h4 class="heading--30 color--002D72"><?php echo esc_html($titulo_genero . $especialista_nombre); ?></h4>
-            <a href="<?php echo esc_url($especialista_url); ?>" class="diario-link">
+            <h4 class="heading--30 color--002D72"><?php echo esc_html($titulo_genero . $autor_nombre); ?></h4>
+            <?php if (!empty($autor_url)) : ?>
+            <a href="<?php echo esc_url($autor_url); ?>" class="diario-link">
                 <span class="diario-link__span">
                     Ver perfil
                 </span>
             </a>
+            <?php endif; ?>
         </div>
 
         <div class="hero-diario-explora">

@@ -1,0 +1,152 @@
+<div id="formulario-1" class="form-step active">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Nombres</span>
+                [text* aso_nombres class:form-control placeholder "Ingresa tus nombres"]
+            </label>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Apellidos</span>
+                [text* aso_apellidos class:form-control placeholder "Ingresa tus apellidos"]
+            </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-secondary">Regresar</button>
+            <button type="button" class="customButton customButton-blue next-step" data-next="2">Siguiente</button>
+        </div>
+    </div>
+</div>
+
+<div id="formulario-2" class="form-step">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Correo electrónico</span>
+                [email* aso_correo class:form-control placeholder "Escribe tu dirección de correo"]
+            </label>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Número de contacto</span>
+                [tel* aso_telefono class:form-control placeholder "Escribe tu número"]
+            </label>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Ciudad</span>
+                [text* aso_ciudad class:form-control placeholder "Escribe tu ciudad de residencia"]
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-secondary prev-step" data-prev="1">Regresar</button>
+            <button type="button" class="customButton customButton-blue next-step" data-next="3">Siguiente</button>
+        </div>
+    </div> 
+</div>
+
+<div id="formulario-3" class="form-step">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Profesión</span>
+                [text* aso_profesion class:form-control placeholder "Escribe tu profesión"]
+            </label>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <label class="form-label">
+                <span>Mensaje</span>
+                [textarea* aso_mensaje class:form-control placeholder "Escribe tu mensaje (Opcional)"]
+            </label>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="terminos-container" style="background-color: #f5f7fc; padding: 16px; border-radius: 4px; border-left: 4px solid #EB5B9C;">
+                <style>
+                .wpcf7-form-control.wpcf7-acceptance {
+                    display: flex;
+                    align-items: flex-start;
+                }
+                
+                .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item {
+                    margin: 0;
+                    display: flex;
+                    align-items: flex-start;
+                }
+                
+                .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"] {
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    margin-right: 10px;
+                    border: 1px solid #003087;
+                    border-radius: 2px;
+                    background-color: white;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    position: relative;
+                    top: 0;
+                    cursor: pointer;
+                }
+                
+                .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"]:checked {
+                    background-color: #003087;
+                    border-color: #003087;
+                }
+                
+                .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"]:checked::after {
+                    content: "";
+                    position: absolute;
+                    left: 8px;
+                    top: 4px;
+                    width: 6px;
+                    height: 12px;
+                    border: solid white;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+                
+                .wpcf7-list-item-label {
+                    font-size: 14px;
+                    color: #003087;
+                    line-height: 1.4;
+                }
+                
+                .wpcf7-list-item-label a {
+                    color: #003087;
+                    text-decoration: underline;
+                }
+                </style>
+                [acceptance terms use_label_element "Al enviar el formulario aceptas los <a href='/terminos-y-condiciones'>Términos y condiciones</a> y las <a href='/politicas-de-privacidad'>Políticas de privacidad</a>."]
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-secondary prev-step" data-prev="2">Regresar</button>
+            [submit class:customButton class:customButton-blue "Enviar"]
+        </div>
+    </div> 
+</div>

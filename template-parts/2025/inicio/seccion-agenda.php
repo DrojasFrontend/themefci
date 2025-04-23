@@ -431,7 +431,7 @@ $eventos = [
     <div class="customContainer px-0">
         <div class="row">
             <div class="col-12 col-lg-5 customAgenda-tabs">
-                <div class="customAgendaScroll px-24">
+                <div class="customAgendaScroll px-24" id="customTabs">
                     <?php $firstActive = true; ?>
                     <?php foreach ($eventos as $key => $evento) : ?>
                         <?php if ($evento['estado'] == true) : ?>
@@ -474,7 +474,7 @@ $eventos = [
                             </ul>
                             <?php if ($evento['link'] != '#') : ?>
                             <div class="d-flex flex-lg-row flex-column gap-24 mt-18">
-                                <a href="<?php echo $evento['link']; ?>" class="customButton customButton-blue">Compra tus entradas</a>
+                                <a href="<?php echo $evento['link']; ?>" class="customButton customButton-blue">Inscríbete</a>
                             </div>
                             <?php endif; ?>
                         </div>

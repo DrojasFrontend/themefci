@@ -2079,6 +2079,7 @@ function create_posttype() {
 add_action( 'init', 'create_posttype' );
 
 // Incluir archivos necesarios
+define('SITE_NAME', get_bloginfo('name'));
 define('URL_BASE', get_stylesheet_directory_uri() . '/');
 define('IMG_BASE', URL_BASE . 'assets/images/');
 $incPath = get_template_directory() . '/inc/';
@@ -2088,6 +2089,7 @@ require_once($incPath . 'styles-and-js-2.php');
 require_once($incPath . 'theme-setup.php');
 require_once($incPath . 'functions-custom.php');
 require_once($incPath . 'custom-postype.php');
+// require_once($incPath . 'acf-fields.php'); // Eliminado porque ACF ya existe
 
 
 // ESPECIALISTAS
@@ -2195,3 +2197,175 @@ add_filter("wpcf7_form_tag", function ($scanned_tag, $form) {
 
     return $scanned_tag;
 }, 10, 2);
+
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false() {
+    return false;
+}
+
+// Función AJAX para buscar laboratorios clínicos
+add_action('wp_ajax_buscar_laboratorios_clinicos', 'buscar_laboratorios_clinicos');
+add_action('wp_ajax_nopriv_buscar_laboratorios_clinicos', 'buscar_laboratorios_clinicos');
+
+function buscar_laboratorios_clinicos() {
+    $query = isset($_POST['query']) ? sanitize_text_field($_POST['query']) : '';
+    $letra = isset($_POST['letra']) ? sanitize_text_field($_POST['letra']) : '';
+    
+    $args = array(
+        'post_type'      => 'labs-clinicos',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+    );
+    
+    // Filtrar por letra inicial si se proporciona
+    if (!empty($letra)) {
+        $args['meta_query'] = array(
+            array(
+                'key'     => '_first_letter',
+                'value'   => $letra,
+                'compare' => '=',
+            ),
+        );
+    }
+    
+    // Filtrar por término de búsqueda si se proporciona
+    if (!empty($query)) {
+        $args['s'] = $query;
+    }
+    
+    $posts = get_posts($args);
+    
+    if (empty($posts)) {
+        echo '<div class="text-center my-5">';
+        echo '<h3 class="mb-3">No se encontraron resultados</h3>';
+        echo '<p>Intenta con otra búsqueda o selecciona otra letra.</p>';
+        echo '</div>';
+        wp_die();
+    }
+    
+    echo '<div class="row">';
+    
+    // Agrupar por letra para una mejor organización de resultados
+    $grouped_posts = array();
+    
+    foreach ($posts as $post) {
+        $first_letter = strtoupper(substr($post->post_title, 0, 1));
+        
+        // Si no existe un array para esta letra, crearlo
+        if (!isset($grouped_posts[$first_letter])) {
+            $grouped_posts[$first_letter] = array();
+        }
+        
+        // Añadir este post al grupo correspondiente
+        $grouped_posts[$first_letter][] = $post;
+        
+        // Guardar la primera letra como meta para futuras búsquedas
+        update_post_meta($post->ID, '_first_letter', $first_letter);
+    }
+    
+    // Ordenar los grupos alfabéticamente
+    ksort($grouped_posts);
+    
+    // Crear contenedor principal con dos columnas
+    echo '<div class="row">';
+    echo '<div class="col-md-4 col-12" id="laboratorios-lista-columna">'; // Columna izquierda para la lista
+    
+    // Mostrar los resultados agrupados
+    foreach ($grouped_posts as $letter => $letter_posts) {
+        echo '<div class="mb-4 pr-lg-100">';
+        echo '<h3 class="fs-2 font-fira-sans pl-12 color--E40046 mb-1">' . $letter . '</h3>';
+        echo '<div class="customSecionLaboratorioClinico__lista" data-letra="' . $letter . '">';
+        
+        foreach ($letter_posts as $post) {
+            setup_postdata($post);
+            
+            // Obtener campos
+            $dia_montaje = get_field('dia_montaje', $post->ID) ?: 'Diario';
+            $condiciones_paciente = get_post_field('post_content', $post->ID);
+            if (empty($condiciones_paciente)) {
+                $condiciones_paciente = 'No requiere preparación especial';
+            }
+            $reporte_resultados = get_field('reporte', $post->ID) ?: 'Menor a 24 horas';
+            
+            // Guardar datos básicos para JavaScript (solo ID para identificación)
+            $lab_data = array('id' => $post->ID);
+            $data_json = htmlspecialchars(json_encode($lab_data), ENT_QUOTES, 'UTF-8');
+            
+            echo '<div class="customSecionLaboratorioClinico__item p-2 bg-white" data-lab-id="' . $post->ID . '">';
+            echo '<div class="d-flex justify-content-between align-items-center">';
+            echo '<h4 class="font-sans fs-6 fw-normal color-080808">' . $post->post_title . '</h4>';
+            echo '<img src="/wp-content/uploads/2025/04/right-arrow.svg" alt="">';
+            echo '</div>';
+            echo '</div>'; // .customSecionLaboratorioClinico__item
+        }
+        
+        echo '</div>'; // .customSecionLaboratorioClinico__lista
+        echo '</div>'; // mb-4
+    }
+    
+    echo '</div>'; // .col-md-4
+    
+    // Columna derecha para mostrar detalles
+    echo '<div class="col-md-8 col-12">';
+    
+    // Panel de placeholder por defecto
+    echo '<div id="detalle-placeholder" class="customSecionLaboratorioClinico__detalle-container bg-white mt-md-0 mt-4 sticky-top" style="top: 20px;">';
+    echo '<div class="text-left">';
+    echo '<p class="text-muted">Seleccione un laboratorio para ver sus detalles</p>';
+    echo '</div>';
+    echo '</div>'; // #detalle-placeholder
+    
+    // Generar paneles de detalles para cada laboratorio (inicialmente ocultos)
+    foreach ($grouped_posts as $letter => $letter_posts) {
+        foreach ($letter_posts as $post) {
+            $dia_montaje = get_field('dia_montaje', $post->ID) ?: 'Diario';
+            $condiciones_paciente = get_post_field('post_content', $post->ID);
+            if (empty($condiciones_paciente)) {
+                $condiciones_paciente = 'No requiere preparación especial';
+            }
+            $reporte_resultados = get_field('reporte', $post->ID) ?: 'Menor a 24 horas';
+            
+            echo '<div id="lab-detalle-' . $post->ID . '" class="customSecionLaboratorioClinico__detalle-container bg-white mt-md-0 mt-4 sticky-top" style="top: 20px; display: none;">';
+            echo '<div>';
+            echo '<h3 class="font-fira-sans fs-2 mb-24 color-080808">' . $post->post_title . '</h3>';
+            echo '<div class="row">';
+            echo '<div class="col-12 mb-3">';
+            echo '<h5 class="font-sans fs-6 fw-bold mb-1">Condiciones del paciente y/o datos anexos:</h5>';
+            // Asegurarse de que el contenido HTML se renderiza correctamente
+            echo '<div class="font-fira-sans fs-p color-080808 fw-normal">' . $condiciones_paciente . '</div>';
+            echo '</div>';
+            echo '<div class="col-12 col-md-6 mb-3">';
+            echo '<h5 class="font-sans fs-6 fw-bold mb-1">Día de montaje:</h5>';
+            echo '<p class="m-0">' . $dia_montaje . '</p>';
+            echo '</div>';
+            echo '<div class="col-12 col-md-6 mb-3">';
+            echo '<h5 class="font-sans fs-6 fw-bold mb-1">Reporte de resultados:</h5>';
+            echo '<p class="m-0">' . $reporte_resultados . '</p>';
+            echo '</div>';
+            echo '</div>'; // .row
+            echo '</div>'; // inner container
+            echo '</div>'; // #lab-detalle-{ID}
+        }
+    }
+    
+    echo '</div>'; // .col-md-8
+    
+    echo '</div>'; // .row
+    
+    wp_die();
+}
+
+// Agregar el script de laboratorio clínico
+function enqueue_laboratorio_clinico_scripts() {
+    if (is_page_template('template/laboratorio-clinico.php')) {
+        // Cargar el JavaScript
+        wp_enqueue_script('js-lacardio', get_template_directory_uri() . '/template/js-lacardio.js', array('jquery'), '1.0.0', true);
+        
+        // Pasar variables al script
+        wp_localize_script('js-lacardio', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_laboratorio_clinico_scripts');
