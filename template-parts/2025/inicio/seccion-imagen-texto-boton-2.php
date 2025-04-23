@@ -46,7 +46,7 @@ $contactos                  = !empty($grupo_imagen_texto_boton_2['contactos']) ?
                             $cta_title  = !empty($cta['title']) ? esc_html($cta['title']) : '';
                             $cta_target = !empty($cta['target']) ? esc_attr($cta['target']) : '';
                         ?>
-                            <a class="d-flex flex-wrap gap-6 mb-18 customHoverLink" href="<?php echo $cta_url; ?>" class="font-sans fs-p" target="<?php echo $cta_target; ?>" title="<?php echo $cta_title; ?>">
+                            <a class="d-flex flex-wrap gap-6 mb-18 customHoverLink font-sans fs-p" href="<?php echo $cta_url; ?>" target="<?php echo $cta_target; ?>" title="<?php echo $cta_title; ?>">
                                 <img src="<?php echo $icono; ?>" alt="<?php echo $nombre; ?>">
                                 <span class="nombre fw-semibold color-080808"><?php echo $nombre; ?></span>
                                 <span class="customHover"><?php echo $cta_title; ?></span>

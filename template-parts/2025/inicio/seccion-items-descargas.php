@@ -29,10 +29,10 @@ $descargas          = !empty($grupo_descargas['descargas']) ? $grupo_descargas['
                         ?>
                             <a class="d-flex justify-content-between align-items-center font-sans fs-p fw-semibold customHoverLink" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" title="<?php echo esc_attr($link_titulo); ?>">
                                 <span class="d-flex align-items-center gap-6">
-                                    <img src="http://lacardio.local/wp-content/uploads/2025/04/descarga.svg" alt="">
+                                    <img src="/wp-content/uploads/2025/04/descarga.svg" alt="">
                                     <span class="customHover"><?php echo esc_html($link_titulo); ?></span>
                                 </span>
-                                <img src="http://lacardio.local/wp-content/uploads/2025/04/right-arrow.svg" alt="">
+                                <img src="/wp-content/uploads/2025/04/right-arrow.svg" alt="">
                             </a>
                         <?php endforeach; ?>
                     </div>
