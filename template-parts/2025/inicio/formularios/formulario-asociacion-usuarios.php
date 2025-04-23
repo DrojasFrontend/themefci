@@ -8,13 +8,13 @@
                         <div class="step-progress-bar">
                             <div class="progress-fill"></div>
                             <div class="step active" data-step="1">
-                                <img src="http://lacardio.local/wp-content/uploads/2025/04/paso-1.svg" alt="">
+                                <img src="/wp-content/uploads/2025/04/paso-1.svg" alt="">
                             </div>
                             <div class="step" data-step="2">
-                                <img src="http://lacardio.local/wp-content/uploads/2025/04/paso-2.svg" alt="">
+                                <img src="/wp-content/uploads/2025/04/paso-2.svg" alt="">
                             </div>
                             <div class="step" data-step="3">
-                                <img src="http://lacardio.local/wp-content/uploads/2025/04/paso-3.svg" alt="">
+                                <img src="/wp-content/uploads/2025/04/paso-3.svg" alt="">
                             </div>
                         </div>
                     </div>
