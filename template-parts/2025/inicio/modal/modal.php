@@ -20,7 +20,7 @@
                 <div class="d-none d-lg-block">
                     <button type="button" class="customModal__close customButton customButton-white " data-modal-formulario-salir>
                         Salir del formulario
-                        <img src="http://lacardio.local/wp-content/uploads/2025/04/icono-salir.svg" alt="" title="icono salir">
+                        <img src="/wp-content/uploads/2025/04/icono-salir.svg" alt="" title="icono salir">
                     </button>
                 </div>
             </div>
