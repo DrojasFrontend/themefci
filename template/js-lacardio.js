@@ -370,7 +370,6 @@ jQuery(document).ready(function ($) {
         alturaMaxima = alturaVentana * 0.6;
       }
 
-      $('.customSecionLaboratorioClinico__lista').css('max-height', alturaMaxima + 'px');
     }
 
     // Función para realizar la búsqueda AJAX

@@ -2328,24 +2328,29 @@ function buscar_laboratorios_clinicos() {
             
             echo '<div id="lab-detalle-' . $post->ID . '" class="customSecionLaboratorioClinico__detalle-container bg-white mt-md-0 mt-4 sticky-top" style="top: 20px; display: none;">';
             echo '<div>';
-            echo '<h3 class="font-fira-sans fs-2 mb-24 color-080808">' . $post->post_title . '</h3>';
+            echo '<h3 class="font-fira-sans pb-24">' . $post->post_title . '</h3>';
             echo '<div class="row">';
-            echo '<div class="col-12 mb-3">';
-            echo '<h5 class="font-sans fs-6 fw-bold mb-1">Condiciones del paciente y/o datos anexos:</h5>';
-            // Asegurarse de que el contenido HTML se renderiza correctamente
-            echo '<div class="font-fira-sans fs-p color-080808 fw-normal">' . $condiciones_paciente . '</div>';
+            echo '<div class="col-12 mb-3 d-flex align-items-start gap-12">';
+            echo '<img src="https://qa.lacardio.org/wp-content/uploads/2025/04/usuario.svg" class="mt-1" width="20" height="20" alt="Lista" />';
+            echo '<p class="font-sans fs-p color-080808"><strong>Condiciones del paciente y/o datos anexos: </strong>';
+            echo $condiciones_paciente;
+            echo '</p>';
             echo '</div>';
-            echo '<div class="col-12 col-md-6 mb-3">';
-            echo '<h5 class="font-sans fs-6 fw-bold mb-1">Día de montaje:</h5>';
-            echo '<p class="m-0">' . $dia_montaje . '</p>';
+            echo '<div class="col-12 mb-3 d-flex align-items-start gap-12">';
+            echo '<img src="https://qa.lacardio.org/wp-content/uploads/2025/04/calendar.svg" class="mt-1" width="20" height="20" alt="Calendario" />';
+            echo '<p class="font-sans fs-p color-080808"><strong>Día de montaje: </strong>';
+            echo $dia_montaje;
+            echo '</p>';
             echo '</div>';
-            echo '<div class="col-12 col-md-6 mb-3">';
-            echo '<h5 class="font-sans fs-6 fw-bold mb-1">Reporte de resultados:</h5>';
-            echo '<p class="m-0">' . $reporte_resultados . '</p>';
+            echo '<div class="col-12 mb-3 d-flex align-items-start gap-12">';
+            echo '<img src="https://qa.lacardio.org/wp-content/uploads/2025/04/reloj.svg" class="mt-1" width="20" height="20" alt="Reloj" />';
+            echo '<p class="font-sans fs-p color-080808"><strong>Reporte de resultados: </strong>';
+            echo $reporte_resultados;
+            echo '</p>';
             echo '</div>';
-            echo '</div>'; // .row
-            echo '</div>'; // inner container
-            echo '</div>'; // #lab-detalle-{ID}
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }
     }
     

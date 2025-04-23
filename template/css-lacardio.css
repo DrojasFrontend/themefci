@@ -1536,6 +1536,7 @@ span.wpcf7-spinner {
 /* customSecionLaboratorioClinico */
 .customSecionLaboratorioClinico {
   margin-top: -40px;
+  padding-bottom: 50px;
 }
 
 .customSecionLaboratorioClinico i {
@@ -1569,8 +1570,8 @@ span.wpcf7-spinner {
   border-bottom-left-radius: 0;
 }
 
-.customSecionLaboratorioClinico__lista {
-  max-height: 400px;
+#laboratorios-lista-columna {
+  max-height: 300px !important;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #ACF #EEF5FF;
@@ -1578,16 +1579,16 @@ span.wpcf7-spinner {
   padding-right: 5px;
 }
 
-.customSecionLaboratorioClinico__lista::-webkit-scrollbar {
+#laboratorios-lista-columna::-webkit-scrollbar {
   width: 6px;
 }
 
-.customSecionLaboratorioClinico__lista::-webkit-scrollbar-track {
+#laboratorios-lista-columna::-webkit-scrollbar-track {
   background: #EEF5FF;
   border-radius: 6px;
 }
 
-.customSecionLaboratorioClinico__lista::-webkit-scrollbar-thumb {
+#laboratorios-lista-columna::-webkit-scrollbar-thumb {
   background-color: #ACF;
   border-radius: 10px;
   border: 3px solid #EEF5FF;
@@ -1606,39 +1607,64 @@ span.wpcf7-spinner {
   font-weight: 700 !important;
 }
 
-/* Media queries para ajustes responsive */
+.customSecionLaboratorioClinico h2 {
+  text-align: left !important;
+  margin-bottom: 24px;
+}
+
+.customSecionLaboratorioClinico h3 {
+  color: #080808;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 42px;
+  letter-spacing: -0.34px;
+}
+
 @media (max-width: 767px) {
   .customSecionLaboratorioClinico__detalle-container {
     position: static !important;
   }
 }
 
-/* Estilos para el contenido HTML en los detalles del laboratorio */
-.contenido-html {
-    font-family: var(--font-fira-sans);
-    color: #080808;
-    font-size: 16px;
-    line-height: 1.6;
+@media (min-width: 1024px) {
+  .customSecionLaboratorioClinico h2 {
+    text-align: center !important;
+    margin-bottom: 60px;
+  }
+
+  .customSecionLaboratorioClinico h3 {
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -0.4px;
+  }
 }
 
-.contenido-html ul, 
+.contenido-html {
+  font-family: var(--font-fira-sans);
+  color: #080808;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contenido-html ul,
 .contenido-html ol {
-    padding-left: 20px;
-    margin-bottom: 1rem;
+  padding-left: 20px;
+  margin-bottom: 1rem;
 }
 
 .contenido-html li {
-    margin-bottom: 0.5rem;
-    list-style-type: disc;
-    display: list-item !important;
+  margin-bottom: 0.5rem;
+  list-style-type: disc;
+  display: list-item !important;
 }
 
 .contenido-html p {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .contenido-html br {
-    display: block;
-    content: "";
-    margin-top: 0.5rem;
+  display: block;
+  content: "";
+  margin-top: 0.5rem;
 }
