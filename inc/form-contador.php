@@ -18,28 +18,92 @@ function inicializar_contador_form() {
 add_action('init', 'inicializar_contador_form');
 
 /**
- * Incrementar el contador cuando se envía un formulario
- * Esta función usa transacciones para evitar problemas de concurrencia
+ * Bloqueo exclusivo para incrementar el contador
+ * Evita problemas de concurrencia usando mutex atómico
  */
-function fci_incrementar_contador($contact_form) {
+function fci_obtener_e_incrementar_contador() {
     global $wpdb;
     
-    // Comenzar transacción para evitar problemas de concurrencia
-    $wpdb->query('START TRANSACTION');
+    // Nombre único para nuestro bloqueo
+    $lock_name = 'contador_consecutivo_lock';
     
-    // Bloquear la fila para evitar que otros procesos la modifiquen simultáneamente
-    $contador = get_option('fci_contador_correos', 299, false);
+    // Intentar adquirir un bloqueo con un timeout de 10 segundos
+    $lock_result = $wpdb->query($wpdb->prepare(
+        "SELECT GET_LOCK(%s, 10)",
+        $lock_name
+    ));
     
-    // Incrementar el contador
+    if ($lock_result === false) {
+        // Si no podemos obtener el bloqueo, retornamos un valor por defecto
+        return get_option('fci_contador_correos', 299) + 1;
+    }
+    
+    // Obtenemos el valor actual directamente de la base de datos
+    $option_row = $wpdb->get_row(
+        $wpdb->prepare(
+            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1",
+            'fci_contador_correos'
+        )
+    );
+    
+    $contador = isset($option_row->option_value) ? (int)$option_row->option_value : 299;
+    
+    // Incrementamos el contador
     $contador++;
     
-    // Actualizar el valor del contador
-    update_option('fci_contador_correos', $contador);
+    // Actualizamos directamente en la base de datos
+    $wpdb->update(
+        $wpdb->options,
+        ['option_value' => $contador],
+        ['option_name' => 'fci_contador_correos']
+    );
     
-    // Completar la transacción
-    $wpdb->query('COMMIT');
+    // Liberamos el bloqueo
+    $wpdb->query($wpdb->prepare(
+        "SELECT RELEASE_LOCK(%s)",
+        $lock_name
+    ));
+    
+    return $contador;
+}
+
+/**
+ * Incrementar el contador cuando se envía un formulario
+ */
+function fci_incrementar_contador($contact_form) {
+    // Obtenemos e incrementamos el contador de manera atómica
+    $nuevo_contador = fci_obtener_e_incrementar_contador();
+    
+    // Guardamos el ID del formulario y el valor para depuración
+    $log_entry = [
+        'timestamp' => current_time('mysql'),
+        'contador' => $nuevo_contador,
+        'form_id' => $contact_form->id(),
+        'session_id' => session_id() ?: 'undefined'
+    ];
+    
+    // Almacenar registro de contadores para depuración
+    $log_actual = get_option('fci_contador_log', []);
+    $log_actual[] = $log_entry;
+    
+    // Mantener solo los últimos 50 registros
+    if (count($log_actual) > 50) {
+        $log_actual = array_slice($log_actual, -50);
+    }
+    
+    update_option('fci_contador_log', $log_actual);
 }
 add_action('wpcf7_mail_sent', 'fci_incrementar_contador');
+
+/**
+ * Iniciar sesión para identificar las solicitudes
+ */
+function fci_iniciar_sesion() {
+    if (!session_id()) {
+        @session_start();
+    }
+}
+add_action('init', 'fci_iniciar_sesion');
 
 /**
  * Generar valores iniciales para el campo oculto consecutivo
@@ -60,6 +124,7 @@ add_filter('wpcf7_form_tag', 'fci_wpcf7_shortcode_handler', 10, 1);
  * Endpoint AJAX para obtener el siguiente valor del contador
  */
 function fci_obtener_contador_ajax() {
+    // Simplemente leemos el valor actual sin incrementarlo
     $contador = get_option('fci_contador_correos', 299);
     $siguiente = $contador + 1;
     
@@ -132,7 +197,7 @@ function fci_add_form_script() {
         
         // Actualizar después de envío exitoso
         document.addEventListener('wpcf7mailsent', function(event) {
-            // Incrementamos localmente y actualizamos después de un breve retraso
+            // Agregamos un retraso para asegurarnos de que el contador se actualizó en el servidor
             setTimeout(obtenerContadorActualizado, 1000);
         });
     });
