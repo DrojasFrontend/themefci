@@ -26,7 +26,7 @@
             <div class="col-12 col-lg-6 px-0">
               <h1 class="fs-1 mb-12 color--fff">+60 Especialidades</h1>
               <p class="fs-p color--fff mb-30">En los expertos que han transformado miles de vidas, puedes confiar</p>
-              <a href="#" class="customButton customButton-white">Agenda tu cita</a>
+              <a href="https://www.lacardio.org/citas-y-teleconsultas/" class="customButton customButton-white">Agenda tu cita</a>
             </div>
           </div>
         </div>

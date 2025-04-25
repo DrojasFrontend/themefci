@@ -2150,8 +2150,6 @@ function filtrar_especialistas() {
     ));
 }
 
-
-
 add_filter("wpcf7_form_tag", function ($scanned_tag, $replace) {
     global $wpdb;
     $default = '';
@@ -2172,9 +2170,6 @@ add_filter("wpcf7_form_tag", function ($scanned_tag, $replace) {
 
     return $scanned_tag;
 }, 10, 2);
-
-
-
 
 add_filter("wpcf7_form_tag", function ($scanned_tag, $form) {
     global $wpdb;
@@ -2218,7 +2213,6 @@ function buscar_laboratorios_clinicos() {
         'order'          => 'ASC',
     );
     
-    // Filtrar por letra inicial si se proporciona
     if (!empty($letra)) {
         $args['meta_query'] = array(
             array(
@@ -2229,7 +2223,6 @@ function buscar_laboratorios_clinicos() {
         );
     }
     
-    // Filtrar por término de búsqueda si se proporciona
     if (!empty($query)) {
         $args['s'] = $query;
     }
@@ -2246,32 +2239,25 @@ function buscar_laboratorios_clinicos() {
     
     echo '<div class="row">';
     
-    // Agrupar por letra para una mejor organización de resultados
     $grouped_posts = array();
     
     foreach ($posts as $post) {
         $first_letter = strtoupper(substr($post->post_title, 0, 1));
         
-        // Si no existe un array para esta letra, crearlo
         if (!isset($grouped_posts[$first_letter])) {
             $grouped_posts[$first_letter] = array();
         }
         
-        // Añadir este post al grupo correspondiente
         $grouped_posts[$first_letter][] = $post;
         
-        // Guardar la primera letra como meta para futuras búsquedas
         update_post_meta($post->ID, '_first_letter', $first_letter);
     }
     
-    // Ordenar los grupos alfabéticamente
     ksort($grouped_posts);
     
-    // Crear contenedor principal con dos columnas
     echo '<div class="row">';
     echo '<div class="col-md-4 col-12" id="laboratorios-lista-columna">'; // Columna izquierda para la lista
     
-    // Mostrar los resultados agrupados
     foreach ($grouped_posts as $letter => $letter_posts) {
         echo '<div class="mb-4 pr-lg-100">';
         echo '<h3 class="fs-2 font-fira-sans pl-12 color--E40046 mb-1">' . $letter . '</h3>';
@@ -2280,7 +2266,6 @@ function buscar_laboratorios_clinicos() {
         foreach ($letter_posts as $post) {
             setup_postdata($post);
             
-            // Obtener campos
             $dia_montaje = get_field('dia_montaje', $post->ID) ?: 'Diario';
             $condiciones_paciente = get_post_field('post_content', $post->ID);
             if (empty($condiciones_paciente)) {
@@ -2288,7 +2273,6 @@ function buscar_laboratorios_clinicos() {
             }
             $reporte_resultados = get_field('reporte', $post->ID) ?: 'Menor a 24 horas';
             
-            // Guardar datos básicos para JavaScript (solo ID para identificación)
             $lab_data = array('id' => $post->ID);
             $data_json = htmlspecialchars(json_encode($lab_data), ENT_QUOTES, 'UTF-8');
             
@@ -2297,14 +2281,14 @@ function buscar_laboratorios_clinicos() {
             echo '<h4 class="font-sans fs-6 fw-normal color-080808">' . $post->post_title . '</h4>';
             echo '<img src="/wp-content/uploads/2025/04/right-arrow.svg" alt="">';
             echo '</div>';
-            echo '</div>'; // .customSecionLaboratorioClinico__item
+            echo '</div>';
         }
         
-        echo '</div>'; // .customSecionLaboratorioClinico__lista
-        echo '</div>'; // mb-4
+        echo '</div>';
+        echo '</div>';
     }
     
-    echo '</div>'; // .col-md-4
+    echo '</div>'; 
     
     // Columna derecha para mostrar detalles
     echo '<div class="col-md-8 col-12">';
@@ -2353,24 +2337,71 @@ function buscar_laboratorios_clinicos() {
             echo '</div>';
         }
     }
-    
-    echo '</div>'; // .col-md-8
-    
-    echo '</div>'; // .row
-    
+    echo '</div>';
+    echo '</div>';
     wp_die();
 }
 
-// Agregar el script de laboratorio clínico
-function enqueue_laboratorio_clinico_scripts() {
-    if (is_page_template('template/laboratorio-clinico.php')) {
-        // Cargar el JavaScript
-        wp_enqueue_script('js-lacardio', get_template_directory_uri() . '/template/js-lacardio.js', array('jquery'), '1.0.0', true);
+/**
+ * Función para manejar el número consecutivo en formularios Contact Form 7
+ */
+
+// Filtro para establecer el valor inicial del campo consecutivo
+add_filter('wpcf7_form_tag', 'establecer_valor_consecutivo', 10, 2);
+function establecer_valor_consecutivo($tag) {
+    // Verificar si es el campo 'consecutivo'
+    if ($tag['name'] == 'consecutivo') {
+        // Obtener el valor actual del contador
+        $contador = get_option('fci_contador_correos', 299); // Valor predeterminado 299 (para que el próximo sea 300)
         
-        // Pasar variables al script
-        wp_localize_script('js-lacardio', 'ajax_object', array(
-            'ajax_url' => admin_url('admin-ajax.php')
-        ));
+        // Establecer el valor actual como el predeterminado para el campo
+        $tag['values'] = (array) ($contador + 1);
+        $tag['pipes'] = new WPCF7_Pipes($tag['values']);
     }
+    
+    return $tag;
 }
-add_action('wp_enqueue_scripts', 'enqueue_laboratorio_clinico_scripts');
+
+// Acción para incrementar el contador después de un envío exitoso
+add_action('wpcf7_mail_sent', 'incrementar_contador_correos');
+function incrementar_contador_correos($contact_form) {
+    // Obtener el valor actual
+    $contador = get_option('fci_contador_correos', 299);
+    
+    // Incrementar para el próximo uso
+    $contador++;
+    
+    // Guardar el nuevo valor
+    update_option('fci_contador_correos', $contador);
+}
+
+// Usar JavaScript directo para actualizar el formulario sin AJAX
+add_action('wp_footer', 'script_actualizacion_consecutivo_directo');
+function script_actualizacion_consecutivo_directo() {
+    ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Actualizar el campo después del envío exitoso
+        document.addEventListener('wpcf7mailsent', function(event) {
+            // Obtener todos los formularios en la página
+            var forms = document.querySelectorAll('.wpcf7 form');
+            
+            // Para cada formulario, actualizar el campo consecutivo con un valor incrementado
+            forms.forEach(function(form) {
+                var consecutivoField = form.querySelector('input[name="consecutivo"]');
+                if (consecutivoField) {
+                    var currentValue = parseInt(consecutivoField.value);
+                    if (!isNaN(currentValue)) {
+                        consecutivoField.value = currentValue + 1;
+                    }
+                }
+            });
+        });
+    });
+    </script>
+    <?php
+}
+
+// Incluir funciones para el contador de formularios
+require_once get_template_directory() . '/inc/form-contador.php';
+

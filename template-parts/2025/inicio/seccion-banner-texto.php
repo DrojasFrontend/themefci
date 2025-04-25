@@ -17,7 +17,7 @@ $descripcion            = !empty($grupo_banner_texto['descripcion']) ? $grupo_ba
                 <?php endif; ?>
 
                 <?php if ($descripcion) : ?>
-                    <p class="fs-p color--fff mb-0 pe-lg-5"><?php echo $descripcion; ?></p>
+                    <p class="font-sana fs-p color--fff mb-0 pe-lg-5"><?php echo $descripcion; ?></p>
                 <?php endif; ?>
             </div>
         </div>

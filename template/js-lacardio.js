@@ -369,7 +369,6 @@ jQuery(document).ready(function ($) {
       } else {
         alturaMaxima = alturaVentana * 0.6;
       }
-
     }
 
     // Función para realizar la búsqueda AJAX
