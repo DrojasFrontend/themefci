@@ -24,6 +24,9 @@ function fci_incrementar_contador($contact_form) {
     $contador = get_option('fci_contador_correos', 299);
     $contador++;
     update_option('fci_contador_correos', $contador);
+    
+    // Guardar el nuevo valor también en una variable transitoria para JavaScript
+    set_transient('ultimo_contador_enviado', $contador, 60 * 60); // 1 hora
 }
 add_action('wpcf7_mail_sent', 'fci_incrementar_contador');
 
@@ -43,24 +46,37 @@ function fci_wpcf7_shortcode_handler($tag) {
 add_filter('wpcf7_form_tag', 'fci_wpcf7_shortcode_handler', 10, 1);
 
 /**
- * Agregar código JavaScript para manipular el consecutivo
+ * Agregar código JavaScript para reflejar el consecutivo actual sin incrementarlo
  */
 function fci_add_form_script() {
+    $ultimo_contador = get_transient('ultimo_contador_enviado');
+    $contador_actual = get_option('fci_contador_correos', 299);
+    $siguiente_valor = $contador_actual + 1;
     ?>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Actualizar el contador después de enviar un formulario exitosamente
+        // Obtener el contador actual
+        var contadorActual = <?php echo $siguiente_valor; ?>;
+        
+        // Actualizar el valor inicial del campo
+        var camposConsecutivo = document.querySelectorAll('input[name="consecutivo"]');
+        if (camposConsecutivo.length > 0) {
+            camposConsecutivo.forEach(function(campo) {
+                campo.value = contadorActual;
+            });
+        }
+        
+        // Actualizar el campo después de enviar un formulario
         document.addEventListener('wpcf7mailsent', function(event) {
-            // Buscar el campo consecutivo en el mismo formulario que se envió
-            var form = event.target;
-            var consecutivoField = form.querySelector('input[name="consecutivo"]');
+            // Obtener nuevo valor después del envío
+            contadorActual++;
             
-            if (consecutivoField) {
-                var currentValue = parseInt(consecutivoField.value);
-                if (!isNaN(currentValue)) {
-                    // Incrementar el valor para el próximo uso
-                    consecutivoField.value = currentValue + 1;
-                }
+            // Actualizar todos los campos consecutivos en la página
+            var camposConsecutivo = document.querySelectorAll('input[name="consecutivo"]');
+            if (camposConsecutivo.length > 0) {
+                camposConsecutivo.forEach(function(campo) {
+                    campo.value = contadorActual;
+                });
             }
         });
     });
